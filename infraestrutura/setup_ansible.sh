@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# Debug do Ansible
+#export ANSIBLE_STDOUT_CALLBACK=debug 
+
 case $TERM in
 xterm-color | *-256color)
     error_color='\e[01;31m'

@@ -108,6 +108,16 @@
       become_flags: "-i"
       ansible.builtin.command:
         cmd: Rscript /opt/projeto/etl/import-libraries.R
+      register: saida_R
+      changed_when: "'pacotes instalados' in saida_R.stdout"
+    
+    # - name: Mostrar a saída do R
+    #   ansible.builtin.debug:
+    #     msg:
+    #       - "Saída do R"
+    #       - "{{ saida_R.stdout }}"
+    #       - "Erros do R"
+    #       - "{{ saida_R.stderr }}"
 
     - name: Recarregar daemon do systemd e ativar o servico
       ansible.builtin.systemd:
