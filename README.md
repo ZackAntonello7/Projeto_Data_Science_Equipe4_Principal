@@ -52,9 +52,20 @@ Explicações técnicas da infraestrutura encontram-se em [infraestrutura/README
 
 ## 📈 Análise Exploratória de Dados
 
-O relatório de [Análise Exploratória de Dados (AED)](AED/aed-PIGrupo4.Rmd) documenta, em R Markdown, o caminho percorrido para ler, inspecionar e preparar os dados de telemetria de jogos digitais gerados pelo simulador do projeto, em parceria com a MIMA Games & Design LTDA. Ele importa os seis conjuntos de dados (compras, itens, itens de compra, jogadores, partidas e sessões) e faz uma análise inicial da estrutura de cada um, com `head()`, `names()`, `str()` e `summary()`. Em seguida, investiga a "sujeira" presente nos dados, como valores ausentes e descontos fora do intervalo válido, que são sinalizados em vez de corrigidos para preservar a rastreabilidade.
+### **Texto corrigido**
 
-Na etapa de transformação, o relatório padroniza os valores ausentes, remove registros duplicados, uniformiza textos e categorias a partir de listas de valores válidos, converte números armazenados como texto e corrige datas registradas em formatos distintos (ISO, dd/mm/aaaa e mm/dd/aaaa), usando referências internas dos próprios dados para resolver ambiguidades. Também mapeia os estados dos jogadores para siglas ISO 3166-2. As etapas de validação dos dados tratados e de geração de gráficos com `ggplot2` ainda estão em desenvolvimento.
+O relatório de análise exploratória de dados (AED) documenta, em R Markdown, o caminho percorrido para ler, inspecionar e preparar os dados de telemetria de jogos digitais gerados pelo simulador do projeto, desenvolvido em parceria com a MIMA Games & Design LTDA. Ele importa os seis conjuntos de dados (compras, itens, itens de compra, jogadores, partidas e sessões) e realiza uma análise inicial da estrutura de cada um, utilizando `head()`, `names()`, `str()` e `summary()`. Em seguida, investiga a "sujeira" presente nos dados, como valores ausentes e descontos fora do intervalo válido, que são sinalizados em vez de corrigidos, a fim de preservar a rastreabilidade.
+
+Na etapa de transformação, o relatório padroniza os valores ausentes, remove registros duplicados, uniformiza textos e categorias com base em listas de valores válidos, converte números armazenados como texto e corrige datas registradas em formatos distintos (ISO, dd/mm/aaaa e mm/dd/aaaa), utilizando referências internas dos próprios dados para resolver ambiguidades. Também mapeia os estados dos jogadores para suas respectivas siglas ISO 3166-2.
+
+Na etapa de validação, são utilizadas várias funções para verificar se ainda existem sujeiras ou inconsistências nos dados transformados. Inicialmente, são realizadas validações gerais, comuns a todos os conjuntos de dados, como a verificação da `remoção de IDs ou linhas duplicadas`, de `valores ausentes em colunas que o gerador nunca deixa em branco` e de `textos vazios que permaneceram nos dados`. Também são realizadas validações específicas para cada conjunto de dados, como a identificação de tempos de sessão inconsistentes no dataset de `sessoes` e de idades fora do intervalo permitido no dataset de `jogadores`.
+
+Por fim, na etapa de construção de gráficos, é utilizado a biblioteca do `ggplot2` para construção de gráficos de análise que nos permitem identificar padrões e tendências presentes nos dados gerados pelo gerador de dados.
+Entretanto, à princípio, foi realizado uma sub-etapa de pré-análise utilizando métricas de estatística descritiva e utilizando funções da biblioteca `dplyr` para gerar novas variáveis que apresentam os valores necessários
+para analisar as métricas pelos gráficos. As explicações técnicas podem ser encontradas no tópico: [Probabilidade e Estatística](#-probabilidade-e-estatística)
+
+O relatório pode ser encontrado em: [Análise Exploratória de Dados (AED)](AED/aed-PIGrupo4.Rmd)
+
 ## 🗄️ Big Data
 A etapa de **Big Data** é responsável pelo armazenamento, processamento e análise dos dados sintéticos de telemetria de jogos digitais. Para isso, utilizamos um **Data Lake** para organizar os dados brutos e tratados, um **Data Warehouse** com modelagem dimensional para facilitar consultas analíticas, **Apache Hadoop** para demonstrar armazenamento e processamento com HDFS e MapReduce, e **Apache Spark** para análises e simulação de processamento em lotes. Também aplicamos técnicas de **Machine Learning** para previsão e identificação de perfis de jogadores, além de análises **OLAP** para explorar os dados por diferentes perspectivas.
 
