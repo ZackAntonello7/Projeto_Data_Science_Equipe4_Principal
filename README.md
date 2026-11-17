@@ -52,8 +52,6 @@ Explicações técnicas da infraestrutura encontram-se em [infraestrutura/README
 
 ## 📈 Análise Exploratória de Dados
 
-### **Texto corrigido**
-
 O relatório de análise exploratória de dados (AED) documenta, em R Markdown, o caminho percorrido para ler, inspecionar e preparar os dados de telemetria de jogos digitais gerados pelo simulador do projeto, desenvolvido em parceria com a MIMA Games & Design LTDA. Ele importa os seis conjuntos de dados (compras, itens, itens de compra, jogadores, partidas e sessões) e realiza uma análise inicial da estrutura de cada um, utilizando `head()`, `names()`, `str()` e `summary()`. Em seguida, investiga a "sujeira" presente nos dados, como valores ausentes e descontos fora do intervalo válido, que são sinalizados em vez de corrigidos, a fim de preservar a rastreabilidade.
 
 Na etapa de transformação, o relatório padroniza os valores ausentes, remove registros duplicados, uniformiza textos e categorias com base em listas de valores válidos, converte números armazenados como texto e corrige datas registradas em formatos distintos (ISO, dd/mm/aaaa e mm/dd/aaaa), utilizando referências internas dos próprios dados para resolver ambiguidades. Também mapeia os estados dos jogadores para suas respectivas siglas ISO 3166-2.
